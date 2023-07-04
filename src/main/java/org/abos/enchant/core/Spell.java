@@ -71,6 +71,8 @@ public enum Spell implements Named {
             return switch (spell) {
                 case WARMTH -> COLD;
                 case COLD -> WARMTH;
+                case FREEZE -> HEAT;
+                case HEAT -> FREEZE;
                 case LIGHT -> DARK;
                 case DARK -> LIGHT;
                 case NOISE -> SILENCE;
