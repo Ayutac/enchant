@@ -1,0 +1,41 @@
+digraph {
+  Light -> Dark [label="opp"]
+  Note -> Noise [label="x2"]
+  Noise -> Silence [label="opp"]
+  Note, Noise -> Sound
+  Sound -> Muffle [label="opp"]
+  Muffle -> Silence [label="x2"]
+  Noise, Shine -> Flashbang
+  Warmth -> Cold [label="opp"]
+  Pressure -> Velocity [label="x2"];
+  Pressure, Velocity -> "Force Bolt"
+  Warmth, Cold -> Wind
+  Wind, Velocity -> "Air Bolt"
+  Wind -> Pressure [label="x2"]
+  Light, Velocity -> "Light Bolt"
+  Darkness, Velocity -> "Darkness Bolt"
+  Light -> Shine [label="x2"]
+  Dark -> Darkness [label="x2"]
+  Velocity -> Speed [label="x2"]
+  Speed -> Slow [label="opp"]
+  Wind, Cold -> Breeze
+  Warmth -> Heat [label="x2"]
+  Cold -> Freeze [label="x2"]
+  Heat -> Ignite [label="x2"]
+  Cold, Pressure -> Condense
+  Condense, Pressure -> Solidify
+  Slow, Light -> Energy
+  Energy, Ignite -> Fire
+  Energy, Condense -> Water
+  Energy, Wind -> Air
+  Energy, Freeze -> Ice
+  Energy, Solidify -> Earth
+  Velocity -> Vibration [label="opp"]
+  Vibration -> Note [label="x2"]
+  Heat, Freeze -> Static
+  Ignite, Freeze -> Light
+  Fire, Velocity -> "Fire Bolt"
+  Water, Velocity -> "Water Bolt"
+  Ice, Velocity -> "Ice Bolt"
+  Earth, Velocity -> "Earth Bolt"
+}
