@@ -190,15 +190,15 @@ public class Player {
         // give XP
         if (imaginationResult >= 0) {
             if (logicResult >= 0) {
-                increaseSkillExp(Skill.INSCRIPTION, 30 * spell.getComplexity());
-                increaseSkillExp(Skill.WILLPOWER, 15 * spell.getComplexity());
+                increaseSkillExp(Skill.IMAGINATION, 30 * spell.getComplexity());
+                increaseSkillExp(Skill.LOGIC, 15 * spell.getComplexity());
             }
             else {
-                increaseSkillExp(Skill.INSCRIPTION, 10 * spell.getComplexity());
+                increaseSkillExp(Skill.IMAGINATION, 10 * spell.getComplexity());
             }
         }
         else if (logicResult >= 0) {
-            increaseSkillExp(Skill.WILLPOWER, 4 * spell.getComplexity());
+            increaseSkillExp(Skill.LOGIC, 4 * spell.getComplexity());
         }
         // calculate result
         if (imaginationResult < 0 || logicResult < 0 || result == null) {
@@ -226,15 +226,15 @@ public class Player {
         // give XP
         if (imaginationResult >= 0) {
             if (logicResult >= 0) {
-                increaseSkillExp(Skill.INSCRIPTION, 15 * (spell1.getComplexity() + spell2.getComplexity())/2);
-                increaseSkillExp(Skill.WILLPOWER, 30 * (spell1.getComplexity() + spell2.getComplexity())/2);
+                increaseSkillExp(Skill.IMAGINATION, 15 * (spell1.getComplexity() + spell2.getComplexity())/2);
+                increaseSkillExp(Skill.LOGIC, 30 * (spell1.getComplexity() + spell2.getComplexity())/2);
             }
             else {
-                increaseSkillExp(Skill.INSCRIPTION, 4 * (spell1.getComplexity() + spell2.getComplexity())/2);
+                increaseSkillExp(Skill.IMAGINATION, 4 * (spell1.getComplexity() + spell2.getComplexity())/2);
             }
         }
         else if (logicResult >= 0) {
-            increaseSkillExp(Skill.WILLPOWER, 10 * (spell1.getComplexity() + spell2.getComplexity())/2);
+            increaseSkillExp(Skill.LOGIC, 10 * (spell1.getComplexity() + spell2.getComplexity())/2);
         }
         // calculate result
         if (imaginationResult < 0 || logicResult < 0 || result == null) {
