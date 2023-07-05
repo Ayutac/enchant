@@ -38,4 +38,30 @@ digraph {
   Water, Velocity -> "Water Bolt"
   Ice, Velocity -> "Ice Bolt"
   Earth, Velocity -> "Earth Bolt"
+  Ignite -> Extinguish [label="opp"]
+  Earth, Water -> Mud
+  Mud, Velocity -> "Mud Bolt"
+  Mud -> Cleanse [label="opp"]
+  Vibration, Earth -> Sand
+  Static -> Electricity [label="x2"]
+  Solidify, Earth -> Stone
+  Stone, Velocity -> "Stone Bolt"
+  Heat, Stone -> Magma
+  Magma, Velocity -> "Magma Bolt"
+  Heat, Sand -> Glass
+  Glass, Velocity -> "Glass Bolt"
+  Solidify -> Barrier [label="x2"]
+  Barrier, Air -> "Air Barrier"
+  Barrier, Water -> "Water Barrier"
+  Barrier, Ice -> "Ice Barrier"
+  Barrier, Fire -> "Fire Barrier"
+  Barrier, Earth -> "Earth Barrier"
+  Barrier, Mud -> "Mud Barrier"
+  Barrier, Stone -> "Stone Barrier"
+  Barrier, Sand -> "Sand Barrier"
+  Barrier, Glass -> "Glass Barrier"
+  Barrier, Magma -> "Magma Barrier"
+  Barrier, Light -> "Light Barrier"
+  Barrier, Darkness -> "Darkness Barrier"
+  Barrier, Pressure -> "Force Barrier"
 }
