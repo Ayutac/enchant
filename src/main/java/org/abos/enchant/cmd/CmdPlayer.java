@@ -11,6 +11,7 @@ public class CmdPlayer extends Player {
         int levels = super.increaseSkillExp(skill, amount);
         if (levels > 0) {
             System.out.printf("You levelled up %s!%n", skill.getName());
+            CmdNavigation.pause(500);
         }
         return levels;
     }
@@ -42,6 +43,7 @@ public class CmdPlayer extends Player {
         else {
             System.out.printf("Your meditation was successful! You understood that %s is the opposite of %s!%n", spell.getName(), result.getName());
         }
+        CmdNavigation.pause(500);
         return result;
     }
 
@@ -63,6 +65,7 @@ public class CmdPlayer extends Player {
         else {
             System.out.printf("Your experimentation was successful! You combined %s and %s into %s!%n", spell1.getName(), spell2.getName(), result.getName());
         }
+        CmdNavigation.pause(500);
         return result;
     }
 
@@ -84,6 +87,7 @@ public class CmdPlayer extends Player {
         else {
             System.out.printf("You created: %s%n", enchantedItem.getName());
         }
+        CmdNavigation.pause(500);
         return enchantedItem;
     }
 
@@ -105,6 +109,7 @@ public class CmdPlayer extends Player {
         else {
             System.out.printf("You recovered: %s%n", unenchantedItem.getName());
         }
+        CmdNavigation.pause(500);
         return unenchantedItem;
     }
 }

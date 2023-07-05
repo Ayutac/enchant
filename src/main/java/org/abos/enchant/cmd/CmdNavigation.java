@@ -225,7 +225,7 @@ public class CmdNavigation {
         stream.forEach(named -> System.out.printf("%3d: %s%n", index[0]++, named.getName()));
     }
 
-    private static void pause(int millis) {
+    public static void pause(int millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException ex) {/* ignore */}
