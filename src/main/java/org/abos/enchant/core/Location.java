@@ -10,7 +10,7 @@ public enum Location implements Named {
     MERCHANT(Action.SHOP, Action.STATS, Action.CHANGE_LOCATION),
     PLAYER_ROOM(Action.MEDITATE, Action.EXPERIMENT, Action.ENCHANT, Action.DISENCHANT, Action.SLEEP, Action.INVENTORY, Action.STATS, Action.CHANGE_LOCATION, Action.SAVE, Action.LOAD, Action.EXIT);
 
-    final Action[] actions;
+    private final transient Action[] actions;
 
     Location(Action... actions) {
         this.actions = Objects.requireNonNull(actions);

@@ -10,7 +10,7 @@ public enum GemType implements Named {
     /**
      * Must be non-negative!
      */
-    final int baseValue;
+    private final transient int baseValue;
 
     GemType(int baseValue) {
         if (baseValue < 0)

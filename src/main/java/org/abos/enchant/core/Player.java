@@ -1,8 +1,11 @@
 package org.abos.enchant.core;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Player {
+public class Player implements Serializable {
+
+    public static final long serialVersionUID = 723492452L;
 
     public static final int EXP_PER_LEVEL = 200;
 
@@ -280,7 +283,7 @@ public class Player {
         }
         // roll for enchanting
         decreaseBar(Bar.STAMINA, Action.ENCHANTING_STAMINA);
-        decreaseBar(Bar.MANA, enchantment.complexity);
+        decreaseBar(Bar.MANA, enchantment.getComplexity());
         final int gemsQuality = neededGems.stream().mapToInt(Gem::getQuality).min().getAsInt();
         final GemType firstGemType = neededGems.get(0).getGemType();
         final boolean mixed = neededGems.stream().anyMatch(gem -> gem.getGemType() != firstGemType);

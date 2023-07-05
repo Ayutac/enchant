@@ -48,7 +48,7 @@ public enum Spell implements Named {
     /**
      * Must be positive!
      */
-    final int complexity;
+    private final transient int complexity;
 
     Spell(int complexity) {
         if (complexity < 1 || complexity > 20) // MAX COMPLEXITY

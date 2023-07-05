@@ -14,6 +14,7 @@ public enum Action implements Named {
     INVENTORY,
     LOAD,
     MEDITATE(player -> player.getSpellTome().size() != Spell.values().length),
+    NEW_GAME,
     SAVE,
     SHOP,
     SLEEP,
@@ -26,7 +27,7 @@ public enum Action implements Named {
     public static final int EXPERIMENTING_STAMINA = 20;
     public static final int MEDITATION_STAMINA = 10;
 
-    final Predicate<Player> prerequisite;
+    private final transient Predicate<Player> prerequisite;
     
     Action() {
         this(player -> true);

@@ -13,9 +13,9 @@ public enum ItemType implements Named {
     SWORD(20, 2d),
     WAND(1, 50d);
 
-    private final int baseValue;
+    private final transient int baseValue;
 
-    private final double enchantFactor;
+    private final transient double enchantFactor;
 
     ItemType(int baseValue, double enchantFactor) {
         if (baseValue < 1)

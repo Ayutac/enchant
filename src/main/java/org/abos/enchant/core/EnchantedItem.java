@@ -2,6 +2,8 @@ package org.abos.enchant.core;
 
 public class EnchantedItem implements Item {
 
+    public static final long serialVersionUID = 6502983485L;
+
     private final UnenchantedItem base;
 
     public final int MAX_QUALITY = 100;
@@ -16,7 +18,7 @@ public class EnchantedItem implements Item {
     public EnchantedItem(UnenchantedItem base, Spell enchantment, int quality) {
         this.base = base;
         this.enchantment = enchantment;
-        if (quality < 0 || quality > 100)
+        if (quality < 0 || quality > MAX_QUALITY)
             throw new IllegalArgumentException("Enchantment quality is invalid!");
         this.quality = quality;
     }

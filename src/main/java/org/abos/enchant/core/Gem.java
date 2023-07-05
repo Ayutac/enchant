@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Gem extends UnenchantedItem {
 
+    public static final long serialVersionUID = 9872345234523L;
+
     public static final int MAX_SIZE = 10;
 
     public static final int MAX_QUALITY = 5;
@@ -14,7 +16,7 @@ public class Gem extends UnenchantedItem {
 
     private final int quality;
 
-    private final String name;
+    private final transient String name;
 
     public Gem(GemType type, int size, int quality) {
         super(ItemType.STONE);
@@ -53,7 +55,7 @@ public class Gem extends UnenchantedItem {
 
     @Override
     public int getValue() {
-        return Math.max(1, type.baseValue*quality*size/3);
+        return Math.max(1, type.getBaseValue()*quality*size/3);
     }
 
     public static Gem randomLow() {

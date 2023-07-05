@@ -1,7 +1,11 @@
 package org.abos.enchant.cmd;
 
 import org.abos.enchant.core.*;
+import org.abos.enchant.core.Action;
+import org.abos.enchant.io.SaveLoad;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -13,10 +17,21 @@ public class CmdNavigation {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        CmdPlayer player = createPlayer(scanner);
+        CmdPlayer player = null;
         Location location;
-        Action[] actions;
+        Action[] actions = new Action[]{Action.NEW_GAME, Action.LOAD, Action.EXIT};
         Action selectedAction = null;
+        System.out.println("Enchant");
+        displayOptions(actions);
+        selectedAction = actions[select(actions.length, scanner, "Please choose: ")];
+        System.out.println();
+        // consequences
+        switch (selectedAction) {
+            case NEW_GAME -> player = createPlayer(scanner);
+            case LOAD -> player = loadOrCreatePlayer(scanner);
+            case EXIT -> System.out.println("Huh?");
+        }
+        System.out.println();
         while (selectedAction != Action.EXIT) {
             location = player.getLocation();
             System.out.printf("You are in %s.%n", location.getName());
@@ -32,7 +47,9 @@ public class CmdNavigation {
                 case EXIT -> System.out.println("Thanks for playing!");
                 case EXPERIMENT -> experiment(player, scanner);
                 case INVENTORY -> displayInventory(player);
+                case LOAD -> loadPlayerOrContinue(player);
                 case MEDITATE -> meditate(player, scanner);
+                case SAVE -> savePlayer(player);
                 case SLEEP -> sleep(player);
                 case STATS -> displayStats(player);
                 default -> System.out.println("Currently not supported!");
@@ -51,7 +68,7 @@ public class CmdNavigation {
             }
         }
         int points = 4;
-        System.out.println(System.out.format("You get %d points to increase any of them.", points));
+        System.out.printf("You get %d points to increase any of them.%n", points);
         int selection;
         for (Attribute attr : Attribute.values()) {
             if (!attr.isHidden() && points > 0) {
@@ -79,6 +96,55 @@ public class CmdNavigation {
         System.out.println();
         player.sleep();
         return player;
+    }
+
+    public static CmdPlayer loadOrCreatePlayer(final Scanner scanner) {
+        JFileChooser chooser = new JFileChooser();
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                return (CmdPlayer)SaveLoad.loadPlayer(chooser.getSelectedFile());
+            } catch (IOException | ClassNotFoundException ex) {
+                System.out.println("Selected file didn't contain a valid save game.");
+                System.out.println("New Player is created:");
+                return createPlayer(scanner);
+            }
+        }
+        System.out.println("Loading was cancelled.");
+        System.out.println("New Player is created:");
+        return createPlayer(scanner);
+    }
+
+    public static CmdPlayer loadPlayerOrContinue(final CmdPlayer playerOld) {
+        JFileChooser chooser = new JFileChooser();
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                CmdPlayer cmdPlayer = (CmdPlayer) SaveLoad.loadPlayer(chooser.getSelectedFile());
+                System.out.println("Loaded the game.");
+                return cmdPlayer;
+            } catch (IOException | ClassNotFoundException ex) {
+                System.out.println("Selected file didn't contain a valid save game!");
+                return playerOld;
+            }
+        }
+        System.out.println("Loading was cancelled!");
+        return playerOld;
+    }
+
+    public static void savePlayer(final CmdPlayer player) {
+        JFileChooser chooser = new JFileChooser();
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                SaveLoad.savePlayer(player, chooser.getSelectedFile());
+                System.out.println("Saved the game.");
+                return;
+            } catch (IOException ex) {
+                System.out.println("Couldn't save game!");
+            }
+        }
+        System.out.println("Saving was cancelled!");
     }
 
     public static void displayInventory(final CmdPlayer player) {

@@ -1,6 +1,8 @@
 package org.abos.enchant.core;
 
-public interface Item extends Named {
+import java.io.Serializable;
+
+public interface Item extends Named, Serializable {
 
     ItemType getItemType();
 

@@ -6,7 +6,7 @@ public enum Attribute implements Named {
     INTELLIGENCE(true),
     VITALITY(false);
 
-    private final boolean hidden;
+    private final transient boolean hidden;
 
     Attribute(boolean hidden) {
         this.hidden = hidden;

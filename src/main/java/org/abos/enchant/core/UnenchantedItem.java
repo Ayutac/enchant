@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class UnenchantedItem implements Item {
 
+    public static final long serialVersionUID = 387241234L;
+
     private final ItemType type;
 
     public UnenchantedItem(ItemType type) {

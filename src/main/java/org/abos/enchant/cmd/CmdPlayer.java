@@ -6,6 +6,8 @@ import java.util.List;
 
 public class CmdPlayer extends Player {
 
+    public static final long serialVersionUID = 723493452L;
+
     @Override
     public int increaseSkillExp(final Skill skill, final int amount) {
         int levels = super.increaseSkillExp(skill, amount);

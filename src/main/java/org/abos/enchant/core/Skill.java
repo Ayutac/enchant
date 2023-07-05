@@ -9,9 +9,9 @@ public enum Skill implements Named {
     LOGIC(Attribute.INTELLIGENCE, false),
     WILLPOWER(Attribute.INTELLIGENCE, false);
 
-    final Attribute base;
+    private final transient Attribute base;
 
-    final boolean hidden;
+    private final transient boolean hidden;
 
     Skill(Attribute base, boolean hidden) {
         this.base = Objects.requireNonNull(base);
