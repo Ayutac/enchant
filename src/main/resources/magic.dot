@@ -64,4 +64,18 @@ digraph {
   Barrier, Light -> "Light Barrier"
   Barrier, Darkness -> "Darkness Barrier"
   Barrier, Pressure -> "Force Barrier"
+  Barrier -> Dome [label="x2"]
+  Dome, Air -> "Air Dome"
+  Dome, Water -> "Water Dome"
+  Dome, Ice -> "Ice Dome"
+  Dome, Fire -> "Fire Dome"
+  Dome, Earth -> "Earth Dome"
+  Dome, Mud -> "Mud Dome"
+  Dome, Stone -> "Stone Dome"
+  Dome, Sand -> "Sand Dome"
+  Dome, Glass -> "Glass Dome"
+  Dome, Magma -> "Magma Dome"
+  Dome, Light -> "Light Dome"
+  Dome, Darkness -> "Darkness Dome"
+  Dome, Pressure -> "Force Dome"
 }

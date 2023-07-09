@@ -8,6 +8,7 @@ public enum Spell implements Named {
     AIR(4),
     AIR_BARRIER(6),
     AIR_BOLT(4),
+    AIR_DOME(7),
     BARRIER(5),
     BREEZE(1),
     CLEANSE(5),
@@ -17,42 +18,53 @@ public enum Spell implements Named {
     DARKNESS(3),
     DARKNESS_BARRIER(6),
     DARKNESS_BOLT(3),
+    DARKNESS_DOME(7),
+    DOME(6),
     EARTH(4),
     EARTH_BARRIER(6),
     EARTH_BOLT(4),
+    EARTH_DOME(7),
     ELECTRICITY(3),
     ENERGY(4),
     EXTINGUISH(3),
     FIRE(4),
     FIRE_BARRIER(6),
     FIRE_BOLT(4),
+    FIRE_DOME(7),
     FLASHBANG(3),
     FORCE_BARRIER(6),
     FORCE_BOLT(3),
+    FORCE_DOME(7),
     FREEZE(1),
     GLASS(6),
     GLASS_BARRIER(7),
     GLASS_BOLT(6),
+    GLASS_DOME(8),
     HEAT(1),
     ICE(4),
     ICE_BARRIER(6),
     ICE_BOLT(4),
+    ICE_DOME(7),
     IGNITE(3),
     LIGHT(3),
     LIGHT_BARRIER(6),
     LIGHT_BOLT(3),
+    LIGHT_DOME(7),
     MAGMA(6),
     MAGMA_BARRIER(7),
     MAGMA_BOLT(6),
+    MAGMA_DOME(8),
     MUD(5),
     MUD_BARRIER(6),
     MUD_BOLT(5),
+    MUD_DOME(7),
     MUFFLE(3),
     NOISE(3),
     NOTE(3),
     PRESSURE(2),
     SAND(5),
     SAND_BARRIER(6),
+    SAND_DOME(7),
     SHINE(3),
     SILENCE(4),
     SLOW(3),
@@ -63,12 +75,14 @@ public enum Spell implements Named {
     STONE(5),
     STONE_BARRIER(6),
     STONE_BOLT(5),
+    STONE_DOME(7),
     VELOCITY(3),
     VIBRATION(3),
     WARMTH(1),
     WATER(4),
     WATER_BARRIER(6),
     WATER_BOLT(4),
+    WATER_DOME(7),
     WIND(2);
 
     /**
@@ -263,6 +277,48 @@ public enum Spell implements Named {
                 return DARKNESS_BARRIER;
             if (comb(spell1, spell2, BARRIER, PRESSURE))
                 return FORCE_BARRIER;
+            if (comb(spell1, spell2, BARRIER, STONE))
+                return STONE_BARRIER;
+            if (comb(spell1, spell2, BARRIER))
+                return DOME;
+            if (comb(spell1, spell2, DOME, AIR))
+                return AIR_DOME;
+            if (comb(spell1, spell2, DOME, WATER))
+                return WATER_DOME;
+            if (comb(spell1, spell2, DOME, ICE))
+                return ICE_DOME;
+            if (comb(spell1, spell2, WATER_DOME, FREEZE))
+                return ICE_DOME;
+            if (comb(spell1, spell2, WATER_DOME, SOLIDIFY))
+                return ICE_DOME;
+            if (comb(spell1, spell2, DOME, FIRE))
+                return FIRE_DOME;
+            if (comb(spell1, spell2, DOME, EARTH))
+                return EARTH_DOME;
+            if (comb(spell1, spell2, DOME, MUD))
+                return MUD_DOME;
+            if (comb(spell1, spell2, WATER_DOME, EARTH))
+                return MUD_DOME;
+            if (comb(spell1, spell2, EARTH_DOME, WATER))
+                return MUD_DOME;
+            if (comb(spell1, spell2, DOME, SAND))
+                return SAND_DOME;
+            if (comb(spell1, spell2, DOME, GLASS))
+                return GLASS_DOME;
+            if (comb(spell1, spell2, SAND_DOME, HEAT))
+                return GLASS_DOME;
+            if (comb(spell1, spell2, DOME, MAGMA))
+                return MAGMA_DOME;
+            if (comb(spell1, spell2, EARTH_DOME, HEAT))
+                return MAGMA_DOME;
+            if (comb(spell1, spell2, DOME, LIGHT))
+                return LIGHT_DOME;
+            if (comb(spell1, spell2, DOME, DARKNESS))
+                return DARKNESS_DOME;
+            if (comb(spell1, spell2, DOME, PRESSURE))
+                return FORCE_DOME;
+            if (comb(spell1, spell2, DOME, STONE))
+                return STONE_DOME;
             return null;
         }
     };
